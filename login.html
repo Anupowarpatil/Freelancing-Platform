@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - MyFreelanceSite</title>
     <style>
-        /* Background image with blur effect */
+        
         
         body {
             font-family: Arial, sans-serif;
@@ -17,17 +17,14 @@
             height: 100vh;
             margin: 0;
             opacity: 0;
-            /* Initially hide the body */
             animation: fadeIn 1.5s forwards;
-            /* Fade-in effect */
             background-image: url('your-image-url.jpg');
-            /* Change this to the path of your image */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            /* Keeps the background fixed while scrolling */
+            
         }
-        /* Fade-in animation */
+        
         
         @keyframes fadeIn {
             from {
@@ -37,7 +34,7 @@
                 opacity: 1;
             }
         }
-        /* Adding blur effect to the background */
+        
         
         body::before {
             content: '';
@@ -50,23 +47,21 @@
             background-size: cover;
             background-position: center;
             filter: blur(8px);
-            /* Blurring the background */
+            
             z-index: -1;
-            /* Make sure the blur is behind the content */
         }
         
         .login-container {
             background-color: rgba(255, 255, 255, 0.9);
-            /* Semi-transparent background for form */
+           
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             width: 350px;
             text-align: center;
             opacity: 0;
-            /* Initially hide the login container */
             animation: fadeIn 1.5s 0.5s forwards;
-            /* Delay the container fade-in */
+            
         }
         
         h1 {
@@ -92,7 +87,6 @@
             border-radius: 5px;
             font-size: 16px;
             transition: border-color 0.3s ease;
-            /* Smooth border transition */
         }
         
         .input-group input[type="submit"] {
@@ -101,19 +95,19 @@
             border: none;
             cursor: pointer;
             transition: transform 0.3s ease, background-color 0.3s ease;
-            /* Smooth transformation */
+            
         }
-        /* Button hover effect */
+        
         
         .input-group input[type="submit"]:hover {
             background-color: #45a049;
             transform: scale(1.05);
-            /* Slightly enlarge the button */
+            
         }
         
         .input-group input:focus {
             border-color: #4CAF50;
-            /* Highlight input border on focus */
+            
         }
         
         .error {
@@ -138,13 +132,13 @@
             color: #4CAF50;
             text-decoration: none;
             transition: color 0.3s ease;
-            /* Smooth color transition */
+            
         }
         
         .signup-link a:hover {
             text-decoration: underline;
             color: #45a049;
-            /* Change color on hover */
+          
         }
     </style>
 </head>
