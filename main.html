@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - KaryaSetu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .title {
+            font-family: 'Times New Roman', Times, serif;
+            color: #4CAF50;
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-left: 500px;
+        }
+
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .option {
+            display: flex;
+            margin-left: 1000px;
+            width: 100%;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .option:hover {
+            background: #f4f4f4;
+            transform: scale(1.05);
+        }
+
+        .option img {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .option-text {
+            font-size: 18px;
+            text-align: left;
+        }
+    </style> 
+</head>
+<body>
+    <div class="container">
+        <div class="title">How do you want to use</div>
+        <div class="title" >KaryaSetu?</div>
+        <div class="options">
+            <a href="login.html" class="option">
+                <img src="company.jpg" alt="Company">
+                <div class="option-text">I'm here to hire tech talent <br><small>Evaluate tech skills at scale</small></div>
+            </a>
+            <a href="login.html" class="option">
+                <img src="free.png" alt="Freelancer">
+                <div class="option-text">I'm here to Freelancing <br><small>Level up your expertise and gain hands-on experience.</small></div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
