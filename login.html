@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MyFreelanceSite</title>
+    <style>
+        /* Background image with blur effect */
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            opacity: 0;
+            /* Initially hide the body */
+            animation: fadeIn 1.5s forwards;
+            /* Fade-in effect */
+            background-image: url('your-image-url.jpg');
+            /* Change this to the path of your image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Keeps the background fixed while scrolling */
+        }
+        /* Fade-in animation */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        /* Adding blur effect to the background */
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            /* Blurring the background */
+            z-index: -1;
+            /* Make sure the blur is behind the content */
+        }
+        
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Semi-transparent background for form */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+            opacity: 0;
+            /* Initially hide the login container */
+            animation: fadeIn 1.5s 0.5s forwards;
+            /* Delay the container fade-in */
+        }
+        
+        h1 {
+            color: #4CAF50;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            /* Smooth border transition */
+        }
+        
+        .input-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            /* Smooth transformation */
+        }
+        /* Button hover effect */
+        
+        .input-group input[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            /* Slightly enlarge the button */
+        }
+        
+        .input-group input:focus {
+            border-color: #4CAF50;
+            /* Highlight input border on focus */
+        }
+        
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .role-selection {
+            margin-top: 20px;
+        }
+        
+        .role-selection input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .signup-link {
+            margin-top: 20px;
+        }
+        
+        .signup-link a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            /* Smooth color transition */
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+            color: #45a049;
+            /* Change color on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h1> Login</h1>
+
+        <div id="error-message" class="error">Please fill in both fields!</div>
+
+        <form id="login-form" onsubmit="return validateForm()">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="input-group">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+
+        <div class="signup-link">
+            <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var errorMessage = document.getElementById("error-message");
+
+            if (username == "" || password == "") {
+                errorMessage.style.display = "block";
+                return false;
+            } else {
+                errorMessage.style.display = "none";
+                alert("Login successful!");
+                return true;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
