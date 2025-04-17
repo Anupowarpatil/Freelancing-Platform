@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Platform</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9; /* Light background */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #79ec82; /* Light Blue */
+            color: rgb(5, 5, 5);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h1 {
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 30px;
+        }
+
+        header nav ul li a {
+            color: rgb(14, 13, 13);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        header nav ul li a:hover {
+            color: #ffeb3b; /* Light yellow for hover effect */
+        }
+
+        /* Hero Section with Video Background */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            padding: 200px 50px;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Place video behind text */
+            opacity: 1; /* Make video slightly transparent */
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333; /* Dark text for visibility */
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .hero button a {
+            padding: 12px 25px;
+            background-color: #ffb74d; /* Light orange */
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero button a:hover {
+            background-color: #ff9800; /* Slightly darker orange for hover */
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #e3f2fd; /* Light blue background */
+        }
+
+        .services h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .services .service-card {
+            background-color: white;
+            padding: 25px;
+            width: 28%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .services .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .services .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .services .service-card h3 {
+            margin-top: 15px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .services .service-card p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .services .service-card a {
+            text-decoration: none;
+            color: #ffb74d; /* Light orange */
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .services .service-card a:hover {
+            color: #ff9800; /* Darker orange for hover effect */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #bee1f1; /* Light Blue */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+         <h1><b>KaryaSetu</b></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Browse Jobs</a></li>
+                <li><a href="#">Become a Freelancer</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Video Background -->
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="C:\Users\Admin\Downloads\WhatsApp Video 2025-04-17 at 10.42.17 AM.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h2>Discover Top Freelancers & Projects</h2>
+        <p>Connect, collaborate, and create amazing projects with talented freelancers!</p>
+        <button><a href="#">Get Started</a></button>
+    </section>
+
+    <section class="services">
+        <h2>Popular Services</h2>
+    </section>
+
+        <section class="services">
+        <div class="service-card">
+            <img src="c:\Users\Admin\Downloads\1.jpg" alt="Web Design">
+            <h3>Web Design</h3>
+            <p>Create stunning, responsive websites that make an impact.</p>
+            <a href="#">Explore</a>
+        </div>
+        <div class="service-card">
+            <img src="C:\Users\Admin\Downloads\2.jpg" alt="Graphic Design">
+            <h3>Graphic Design</h3>
+            <p>Craft beautiful visuals that tell your brand story.</p>
+            <a href="#">Explore</a>
+        </div>
+        <div class="service-card">
+            <img src="c:\Users\Admin\Downloads\3.jpg" alt="Copywriting">
+            <h3>Consulting</h3>
+            <p>Engage and convert audiences with powerful copywriting.</p>
+            <a href="#">Explore</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Freelance Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+  
