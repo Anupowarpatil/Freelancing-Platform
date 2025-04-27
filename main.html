@@ -1,245 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Bar with Search, Slideshow & Auth (Bootstrap)</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KaryaSetu - Freelance Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px;
+        :root {
+            --primary-color: #1E90FF;
+            --secondary-color: #20B2AA;
+            --accent-color: #48D1CC;
+            --text-light: #ffffff;
+            --text-dark: #222222;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        header.sticky {
+            padding: 0.5rem 0;
+            background: rgba(30, 144, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center; /* Center-align the links */
-            flex-grow: 1;
-        }
-
-        nav li {
-            margin-right: 20px;
-        }
-
-        nav li:last-child {
-            margin-right: 0;
-        }
-
-        nav a {
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            color: var(--text-light);
             text-decoration: none;
-            color: white;
-            padding: 5px 20px;
-            font-size: large;
-            border: 1px solid transparent;
-            transition: border-color 0.3s ease;
-            border-radius: 5px;
         }
-
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.5s ease;
+        }
+        .logo:hover::after {
+            width: 100%;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            margin-left: 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
         nav a:hover {
-            color: lightgray;
-            border-color: lightgray;
+            color: var(--accent-color);
         }
-
-        .nav-left {
+        nav a:hover::after {
+            width: 100%;
+        }
+        .hero {
+            height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 2rem;
+            background: linear-gradient(to right, #E0F7FA, #B2EBF2);
+            padding-top: 60px;
+            position: relative;
+            overflow: hidden;
         }
-
-        nav h1 {
-            margin: 0;
-            margin-left: 50px;
-            font-size: 1.5em;
+        .hero-content {
+            width: 50%;
+            padding-right: 2rem;
+            z-index: 2;
         }
-
-        .search-auth-container {
-            display: flex;
-            align-items: center;
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
         }
-
-        .search-container {
-            display: flex;
-            margin-right: 20px;
-            margin-left: 200px; /* Shift the search bar to the right */
+        .hero-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
         }
-
-        .search-container input[type="text"] {
-            padding: 8px;
-            border: none;
-            border-radius: 5px 0 0 5px;
-            width: 200px;
+        .hero-video {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            height: 60%;
+            border-radius: 15px;
+            overflow: hidden;
+            z-index: 1;
         }
-
-        .search-container button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-
-        .search-container button:hover {
-            background-color: #45a049;
-        }
-
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: auto;
-        }
-
-        .auth-buttons button {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .login-btn {
-            background-color: transparent;
-            color: white;
-            border: 1px solid white;
-        }
-
-        .login-btn:hover {
-            background-color: white;
-            color: #333;
-        }
-
-        .signup-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .signup-btn:hover {
-            background-color: #45a049;
-        }
-
-        .profile-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .hero-video video {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border: 2px solid white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .profile-icon:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        .services {
+            padding: 6rem 4rem;
+            background: #E0F7FA;
+            position: relative;
+            overflow: hidden;
         }
-
-        /* For Dropdown Menu */
-        .dropdown-menu {
-            width: 250px; /* Adjust the width of the dropdown */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
-
-        /* Adjust Image Size Without Cropping */
-        .carousel-item img {
-            width: auto; /* Maintain the image's aspect ratio */
-            max-width: 1200px; /* Limit the width of the image */
-            height: auto; /* Maintain the aspect ratio for height */
-            max-height: 800px; /* Limit the height of the image */
-            margin: 0 auto; /* Center the image horizontally */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
+        .service-card {
+            border: none;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: left;
+            background: white;
+            box-shadow: 0 10px 30px rgba(30, 144, 255, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(30, 144, 255, 0.2);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        /* Other styles omitted for brevity */
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="nav-left">
-            <h1>KarySetu</h1>
-        </div>
-
-        <div class="search-auth-container">
-            <div class="search-container">
-                <input type="text" placeholder="Search...">
-                <button>Search</button>
+<header>
+    <div class="container header-container">
+        <a href="#" class="logo">KaryaSetu</a>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#contact">Contact</a>
+        <div class="profile-menu" style="position: relative; margin-left: 2rem;">
+            <div id="profile-icon" style="width: 40px; height: 40px; background-color: var(--accent-color); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; cursor: pointer; user-select: none;">
+                U
+            </div>
+            <div id="dropdown-menu" style="display: none; position: absolute; right: 0; top: 50px; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; min-width: 150px; z-index: 200;">
+                <a href="profile.php" style="display: block; padding: 10px 15px; color: var(--text-dark); text-decoration: none; border-bottom: 1px solid #eee;">Profile</a>
+                <a href="auth.php" style="display: block; padding: 10px 15px; color: var(--text-dark); text-decoration: none; border-bottom: 1px solid #eee;">Settings</a>
+                <a href="logout.php" style="display: block; padding: 10px 15px; color: var(--text-dark); text-decoration: none;">Logout</a>
             </div>
         </div>
-
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-
-        <div class="auth-buttons">
-            <a href="main.html">
-                <button class="login-btn">Login</button>
-            </a>
-            <a href="signup.html">
-                <button class="signup-btn">Sign Up</button>
-            </a>
-
-            <!-- Profile Icon with Dropdown -->
-            <div class="dropdown">
-                <img src="D:\22uai120\9815472.png" alt="Profile" class="profile-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Refer Friend</a></li>
-                    <li><a class="dropdown-item" href="#">Manage Project</a></li>
-                    <li><a class="dropdown-item" href="#">Become a Client</a></li>
-                    <li><a class="dropdown-item" href="#">Invite Team</a></li>
-                    <li><a class="dropdown-item" href="#">Payment</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Language</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <br><br>
-    <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="D:\22uai120\abc.png" class="d-block w-100" alt="Image 1">
-                <div class="carousel-caption">
-                    <h5>KarySetu</h5>
-                    <p>Where creativity meets technique.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img2.png" class="d-block w-100" alt="Image 2">
-                <div class="carousel-caption">
-                    <h5>KarySetu</h5>
-                    <p>Where creativity meets technique.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img3.png" class="d-block w-100" alt="Image 3">
-                <div class="carousel-caption">
-                    <h5>KarySetu</h5>
-                    <p>Where creativity meets technique.</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        </nav>
     </div>
+</header>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<section id="hero" class="hero">
+    <div class="hero-content">
+        <h1>Connect with Skilled Freelancers</h1>
+        <p>KaryaSetu makes it easy to find and hire top freelancers for your projects. Get high-quality work delivered on time and within your budget.</p>
+        <a href="#services" class="cta-button">Explore Services</a>
+    </div>
+    <div class="hero-video">
+        <video autoplay muted loop playsinline width="100%" height="100%" poster="assets/video-fallback.jpg">
+            <source src="C:\xampp\htdocs\Karyasetu\landing vid.mp4"type="video/mp4" />
+            <source src="assets/landing vid.webm" type="video/webm" />
+            <source src="assets/landing vid.ogv" type="video/ogg" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+<section id="services" class="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+        <a href="service1.html" class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <h3>Web Development</h3>
+            <p>Professional website design and development services tailored to your specific needs and business goals.</p>
+        </a>
+        <a href="service2.html" class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-pencil-alt"></i>
+            </div>
+            <h3>Content Writing</h3>
+            <p>Engaging and SEO-optimized content that helps you connect with your audience and drive conversions.</p>
+        </a>
+        <a href="service3.html" class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3>Graphic Design</h3>
+            <p>Creative and eye-catching designs that enhance your brand identity and visual communication.</p>
+        </a>
+        <a href="service4.html" class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Digital Marketing</h3>
+            <p>Comprehensive digital marketing strategies to increase your online visibility and grow your business.</p>
+        </a>
+        <a href="service5.html" class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>App Development</h3>
+            <p>Custom mobile applications that deliver seamless user experiences across all platforms and devices.</p>
+        </a>
+        <a href="service6.html" class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-video"></i>
+            </div>
+            <h3>Video Production</h3>
+            <p>Professional video content creation to engage your audience and effectively communicate your message.</p>
+        </a>
+    </div>
+</section>
+
+<!-- Additional sections like About, How It Works, Contact can be added here -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const profileIcon = document.getElementById('profile-icon');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        profileIcon.addEventListener('click', function(event) {
+            event.stopPropagation();
+            if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+                dropdownMenu.style.display = 'block';
+            } else {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', function() {
+            dropdownMenu.style.display = 'none';
+        });
+    });
+</script>
 </body>
 </html>

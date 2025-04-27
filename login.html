@@ -1,193 +1,322 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - MyFreelanceSite</title>
-    <style>
-        
-        
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            opacity: 0;
-            animation: fadeIn 1.5s forwards;
-            background-image: url('your-image-url.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            
-        }
-        
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: inherit;
-            background-size: cover;
-            background-position: center;
-            filter: blur(8px);
-            
-            z-index: -1;
-        }
-        
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.9);
-           
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 350px;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 1.5s 0.5s forwards;
-            
-        }
-        
-        h1 {
-            color: #4CAF50;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .input-group input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            
-        }
-        
-        
-        .input-group input[type="submit"]:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-            
-        }
-        
-        .input-group input:focus {
-            border-color: #4CAF50;
-            
-        }
-        
-        .error {
-            color: red;
-            margin-top: 10px;
-            display: none;
-        }
-        
-        .role-selection {
-            margin-top: 20px;
-        }
-        
-        .role-selection input[type="radio"] {
-            margin-right: 10px;
-        }
-        
-        .signup-link {
-            margin-top: 20px;
-        }
-        
-        .signup-link a {
-            color: #4CAF50;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            
-        }
-        
-        .signup-link a:hover {
-            text-decoration: underline;
-            color: #45a049;
-          
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KaryaSetu - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #1e90ff;
+      --secondary-color: #6a5acd;
+      --bg-light: #f5f7fa;
+      --text-dark: #333;
+      --text-light: #777;
+      --transition: 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .login-container {
+      display: flex;
+      width: 100%;
+      min-height: 600px;
+    }
+
+    .login-form,
+    .login-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .login-image {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      position: relative;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .login-image h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .login-image p {
+      font-size: 1rem;
+      max-width: 300px;
+      margin-bottom: 2rem;
+    }
+
+    .signup-btn {
+      background: white;
+      color: var(--primary-color);
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .signup-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-3px);
+    }
+
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .floating-element {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    .floating-element:nth-child(1) {
+      top: 10%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    .floating-element:nth-child(2) {
+      top: 40%;
+      left: 60%;
+      animation-delay: 2s;
+    }
+
+    .floating-element:nth-child(3) {
+      top: 75%;
+      left: 30%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .login-form {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .login-form h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+
+    input {
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+      transition: var(--transition);
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
+    }
+
+    .forgot-password {
+      text-align: right;
+      margin-bottom: 15px;
+    }
+
+    .forgot-password a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .forgot-password a:hover {
+      color: var(--primary-color);
+    }
+
+    button {
+      padding: 12px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    button:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .social-login {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .social-login p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--bg-light);
+      border-radius: 50%;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+
+    .social-icons a:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .not-member {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .not-member a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .not-member a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .login-container {
+        flex-direction: column-reverse;
+      }
+
+      .login-image,
+      .login-form {
+        flex: none;
+        width: 100%;
+      }
+
+      .login-image {
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
+  <div class="container">
     <div class="login-container">
-        <h1> Login</h1>
-
-        <div id="error-message" class="error">Please fill in both fields!</div>
-
-        <form id="login-form" onsubmit="return validateForm()">
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
-            </div>
-
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-
-            <div class="input-group">
-                <input type="submit" value="Login">
-            </div>
-        </form>
-
-        <div class="signup-link">
-            <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+      <div class="login-form">
+        <div class="logo">KaryaSetu</div>
+        <h2>Welcome Back</h2>
+<form method="POST" action="backend/login.php">
+  <input type="email" name="email" placeholder="Email Address" required />
+  <input type="password" name="password" placeholder="Password" required />
+  <div class="forgot-password">
+    <a href="#">Forgot Password?</a>
+  </div>
+  <button type="submit">Log In</button>
+</form>
+        <div class="social-login">
+          <p>Or log in with</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-google"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
+        <div class="not-member">
+          Not a member yet? <a href="signup.html">Sign Up</a>
+        </div>
+      </div>
+      <div class="login-image">
+        <div class="signup-image-content">
+          <h2>Hello, Friend!</h2>
+          <p>Enter your personal details and start your journey with us.</p>
+          <a href="signup.html" class="signup-btn">Sign Up</a>
+        </div>
+        <div class="floating-elements">
+          <div class="floating-element"></div>
+          <div class="floating-element"></div>
+          <div class="floating-element"></div>
+        </div>
+      </div>
     </div>
-
-    <script>
-        function validateForm() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var errorMessage = document.getElementById("error-message");
-
-            if (username == "" || password == "") {
-                errorMessage.style.display = "block";
-                return false;
-            } else {
-                errorMessage.style.display = "none";
-                alert("Login successful!");
-                return true;
-            }
-        }
-    </script>
-
+  </div>
 </body>
-
 </html>
